@@ -11,4 +11,4 @@ COPY index.htm /inetpub/wwwroot/
 EXPOSE 80
 
 # Sets a command or process that will run each time a container is run from the new image.
-CMD [ "cmd" ]
+CMD [ "ping localhost -t" ]
