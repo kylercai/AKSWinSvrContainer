@@ -1,15 +1,8 @@
-FROM mcr.microsoft.com/windows/servercore:ltsc2019
+FROM mcr.microsoft.com/windows/servercore/iis
 
-LABEL Description="IIS" Vendor="Microsoft" Version="10"
+RUN powershell -NoProfile -Command Remove-Item -Recurse C:\inetpub\wwwroot\*
 
-#RUN powershell -Command Add-WindowsFeature Web-Server
-# Uses dism.exe to install the IIS role.
-RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
+WORKDIR /inetpub/wwwroot
 
-COPY index.htm c:/inetpub/wwwroot/
-COPY image.jpg c:/inetpub/wwwroot/
-
-EXPOSE 80
-
-# Sets a command or process that will run each time a container is run from the new image.
-CMD [ "ping localhost -t" ]
+COPY index.htm .
+COPY image.jpg .
