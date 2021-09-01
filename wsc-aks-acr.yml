@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: learningwsc
 spec:
-  replicas: 3 
+  replicas: 1 
   selector:
     matchLabels:
       app: learningwsc
@@ -15,7 +15,7 @@ spec:
       containers:
       - name: learningwsc
         image: ckacr001.azurecr.cn/learningwsc:281
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent 
         ports:
         - containerPort: 80
 ---

@@ -6,7 +6,8 @@ LABEL Description="IIS" Vendor="Microsoft" Version="10"
 # Uses dism.exe to install the IIS role.
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 
-COPY index.htm /inetpub/wwwroot/
+COPY index.htm c:\inetpub\wwwroot\index.html
+COPY image.jpg c:\inetpub\wwwroot\image.jpg
 
 EXPOSE 80
 
