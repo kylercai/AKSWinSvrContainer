@@ -1,11 +1,8 @@
-# Sample Dockerfile
+FROM mcr.microsoft.com/windows/servercore/iis
 
-# Indicates that the windowsservercore image will be used as the base image.
-FROM mcr.microsoft.com/windows/servercore:ltsc2019
+RUN powershell -NoProfile -Command Remove-Item -Recurse C:\inetpub\wwwroot\*
 
-RUN powershell -Command Add-WindowsFeature Web-Server
+WORKDIR /inetpub/wwwroot
 
-EXPOSE 80
-
-# Sets a command or process that will run each time a container is run from the new image.
-CMD [ "ping localhost -t" ]
+COPY index.htm .
+COPY image.jpg .
