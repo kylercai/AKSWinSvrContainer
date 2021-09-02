@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: learningwsc
-        image: ckacr001.azurecr.cn/learningwsc:302
+        image: ckacr001.azurecr.cn/learningwsc:303
         imagePullPolicy: IfNotPresent 
         ports:
         - containerPort: 80
