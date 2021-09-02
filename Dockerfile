@@ -6,3 +6,6 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2019
 RUN powershell -Command Add-WindowsFeature Web-Server
 
 EXPOSE 80
+
+# Sets a command or process that will run each time a container is run from the new image.
+CMD [ "ping localhost -t" ]
